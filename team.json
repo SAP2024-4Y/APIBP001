@@ -2,10 +2,9 @@
   "team_id": "APIBP001",
   "approach": "A",
   "members": [
-    { "name": "Member One", "github_username": "gh-handle-1" },
-    { "name": "Member Two", "github_username": "gh-handle-2" },
-    { "name": "Member Three", "github_username": "gh-handle-3" },
-    { "name": "Member Four", "github_username": "gh-handle-4" },
-    { "name": "Member Five", "github_username": "gh-handle-5" }
+    { "name": "Ansh Biraj", "github_username": "Ansh-Biraj" },
+    { "name": "Abhishek Patil", "github_username": "CheetahPatil" },
+    { "name": "Yash Shimpi", "github_username": "yash8shimpi" },
+    { "name": "Aburba Chakraborty", "github_username": "apurbaXD" }
   ]
 }
