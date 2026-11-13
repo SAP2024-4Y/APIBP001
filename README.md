@@ -6,55 +6,12 @@ Production-grade dual API (REST + GraphQL) for university management. **Team ID:
 
 ## Team
 
-#
-
-Name
-
-Roll No
-
-GitHub ID
-
-Email
-
-1
-
-Ansh Biraj
-
-2024SL70010
-
-Ansh-Biraj
-
-2024sl70010@wilp.bits-pilani.ac.in
-
-2
-
-Abhishek Patil
-
-2024SL70004
-
-CheetahPatil
-
-2024sl70004@wilp.bits-pilani.ac.in
-
-3
-
-Yash Shimpi
-
-2024SL70005
-
-yash8shimpi
-
-2024sl70005@wilp.bits-pilani.ac.in
-
-4
-
-Aburba Chakraborty
-
-2024SL70048
-
-apurbaXD
-
-2024sl70048@wilp.bits-pilani.ac.in
+| # | Name | Roll No | GitHub ID | Email |
+|---|------|---------|-----------|-------|
+| 1 | Ansh Biraj | 2024SL70010 | [Ansh-Biraj](https://github.com/Ansh-Biraj) | 2024sl70010@wilp.bits-pilani.ac.in |
+| 2 | Abhishek Patil | 2024SL70004 | [CheetahPatil](https://github.com/CheetahPatil) | 2024sl70004@wilp.bits-pilani.ac.in |
+| 3 | Yash Shimpi | 2024SL70005 | [yash8shimpi](https://github.com/yash8shimpi) | 2024sl70005@wilp.bits-pilani.ac.in |
+| 4 | Aburba Chakraborty | 2024SL70048 | [apurbaXD](https://github.com/apurbaXD) | 2024sl70048@wilp.bits-pilani.ac.in |
 
 ---
 
