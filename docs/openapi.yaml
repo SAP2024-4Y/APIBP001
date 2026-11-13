@@ -1,0 +1,190 @@
+openapi: 3.0.3
+info:
+  title: University Management API
+  description: Production-grade REST API for university management (APIBP001)
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Local development
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status: { type: integer }
+        error: { type: string }
+        message: { type: string }
+        path: { type: string }
+        timestamp: { type: string, format: date-time }
+
+security:
+  - bearerAuth: []
+
+paths:
+  /auth/login:
+    post:
+      tags: [Authentication]
+      summary: Obtain a JWT token
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username: { type: string, example: demo }
+                password: { type: string, example: demo-password }
+      responses:
+        '200':
+          description: JWT token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token: { type: string }
+                  tokenType: { type: string, example: Bearer }
+                  expiresIn: { type: integer }
+
+  /students:
+    get:
+      tags: [Students]
+      summary: List students (cursor pagination)
+      parameters:
+        - name: after
+          in: query
+          schema: { type: string }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20, maximum: 100 }
+      responses:
+        '200':
+          description: Paginated list of students
+    post:
+      tags: [Students]
+      summary: Create a student
+      responses:
+        '201':
+          description: Created
+
+  /students/{id}:
+    get:
+      tags: [Students]
+      summary: Get student by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Student }
+        '404': { description: Not found }
+
+  /courses:
+    get:
+      tags: [Courses]
+      summary: List courses (cursor pagination)
+      parameters:
+        - name: after
+          in: query
+          schema: { type: string }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20 }
+      responses:
+        '200': { description: Paginated list }
+    post:
+      tags: [Courses]
+      summary: Create a course
+      responses:
+        '201': { description: Created }
+
+  /faculty:
+    get:
+      tags: [Faculty]
+      summary: List all faculty
+      responses:
+        '200': { description: List of faculty }
+    post:
+      tags: [Faculty]
+      summary: Create faculty member
+      responses:
+        '201': { description: Created }
+
+  /locations:
+    get:
+      tags: [Locations]
+      summary: List campus locations
+      responses:
+        '200': { description: List of locations }
+
+  /locations/nearby:
+    get:
+      tags: [Locations]
+      summary: Nearby locations (GeoJSON)
+      parameters:
+        - name: latitude
+          in: query
+          required: true
+          schema: { type: number }
+        - name: longitude
+          in: query
+          required: true
+          schema: { type: number }
+        - name: radius_km
+          in: query
+          schema: { type: number, default: 1.0 }
+      responses:
+        '200':
+          description: GeoJSON FeatureCollection
+
+  /schedules:
+    get:
+      tags: [Schedules]
+      summary: List schedules, optionally filtered by ISO 8601 window
+      parameters:
+        - name: start
+          in: query
+          schema: { type: string, format: date-time }
+        - name: end
+          in: query
+          schema: { type: string, format: date-time }
+      responses:
+        '200': { description: List of schedules }
+    post:
+      tags: [Schedules]
+      summary: Create a schedule
+      responses:
+        '201': { description: Created }
+        '409': { description: Conflict }
+
+  /schedules/{id}:
+    get:
+      tags: [Schedules]
+      summary: Get schedule by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Schedule }
+        '404': { description: Not found }
+    put:
+      tags: [Schedules]
+      summary: Update schedule
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Updated }
+        '409': { description: Conflict }
