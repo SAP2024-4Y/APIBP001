@@ -9,7 +9,7 @@
 | 3 | Yash Shimpi        | 2024SL70005 | [yash8shimpi](https://github.com/yash8shimpi)   | 2024sl70005@wilp.bits-pilani.ac.in |
 | 4 | Aburba Chakraborty | 2024SL70048 | [apurbaXD](https://github.com/apurbaXD)         | 2024sl70048@wilp.bits-pilani.ac.in |
 
-- Team ID: `APIBP001` (equals the repository name and `team.json.team_id`)
+- Team ID: `APIBP001`
 - Chosen Approach: `A` — REST-First + GraphQL Layer
 
 ---
