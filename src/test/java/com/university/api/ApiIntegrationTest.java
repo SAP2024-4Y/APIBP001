@@ -27,7 +27,7 @@ class ApiIntegrationTest {
     ObjectMapper objectMapper;
 
     private String obtainToken() throws Exception {
-        MvcResult result = mockMvc.perform(post("/api/v1/auth/login")
+        MvcResult result = mockMvc.perform(post("/api/v1/auth/token")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"username\":\"demo\",\"password\":\"demo-password\"}"))
                 .andExpect(status().isOk())
@@ -45,7 +45,7 @@ class ApiIntegrationTest {
     @Test
     void studentsRequiresAuth() throws Exception {
         mockMvc.perform(get("/api/v1/students"))
-                .andExpect(status().isForbidden());
+                .andExpect(status().isUnauthorized());
     }
 
     @Test
@@ -57,7 +57,7 @@ class ApiIntegrationTest {
                 .andReturn();
         JsonNode body = objectMapper.readTree(result.getResponse().getContentAsString());
         assertThat(body.has("data")).isTrue();
-        assertThat(body.has("hasMore")).isTrue();
+        assertThat(body.has("has_more")).isTrue();
         assertThat(body.get("data").isArray()).isTrue();
     }
 
