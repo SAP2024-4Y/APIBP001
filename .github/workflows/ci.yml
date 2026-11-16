@@ -21,8 +21,13 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Create SQLite data directory
+        run: mkdir -p data
+
       - name: Build and test
         run: mvn -q verify
+        env:
+          APP_JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
       - name: Upload test results
         if: always()
